@@ -116,7 +116,7 @@ test('Verify required fields for input text', async ({page})=> {
 test('Verify link Hyperlink Hyperlink Create an account is click', async  ({page}) => {
     // await page.goto(url)
     await page.getByRole('link',{name:'Create an account'}).click()
-    await expect(page).toHaveURL('https://automate-test.stpb-digital.com/regist')
+    await expect(page).toHaveURL('https://automate-test.stpb-digital.com/register/')
     await expect(page).toHaveTitle("Kru P' Beam - STPB")
 })
 
