@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 
-test.only('Test Locator', async ({ page }) => {
+test('Test Locator', async ({ page }) => {
     await page.goto('https://automate-test.stpb-digital.com/login/')
     await page.locator('#email').fill('admin')
     // await page.locator('class="MuiOutlinedInput-input MuiInputBase-input css-pv9vr9"').fill('admin')
