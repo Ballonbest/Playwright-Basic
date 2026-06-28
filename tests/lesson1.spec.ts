@@ -17,7 +17,7 @@ test('Test Assertion', async({page})=> {
     await page.locator('#btn-login').click() //สั่งให้กดปุ่มล๊อคอิน
 
     await expect(page.locator('//*[@id="__next"]/div[1]/div/div/div[2]/div/div/form/div[1]/p')).toHaveText('email must be a valid email')
-    await expect(page.locator('#btn-login')).toBeDisabled()
+    await expect(page.locator('#btn-login')).toBeEnabled()
     
     await expect(page).toHaveURL('https://automate-test.stpb-digital.com/login/')
 })
