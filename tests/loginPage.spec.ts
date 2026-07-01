@@ -50,9 +50,9 @@ test('Validate the email format is invalid', async({page})=>{
 
 test('Validate the password format is valid',async ({page})=> {
     // await page.goto(url)
-    await page.locator(locator_email).fill('1234567890')
+    await page.locator(locator_pass).fill('1234567890')
 
-    await expect(page.locator(locator_email)).toHaveValue('1234567890')
+    await expect(page.locator(locator_pass)).toHaveValue('1234567890')
     await expect(page.getByText(locator_msgPassword)).not.toBeVisible()
 })
 
