@@ -28,13 +28,14 @@ test('Should allow selecting only one gender at a time', async({page}) => {
 })
 
 test('Dropdown Selection with Robust Locator', async({page}) => {
-    const countryDropdown = page.locator('.form-row').filter({hasText: 'Country'}).locator('select')
-    const countryDropdown2 = page.getByLabel('Country')
+    await page.goto('https://web-demo.qahive.com/form-demo')
+
+    const countryDropdown = page.locator('.form-row').filter({hasText: 'Country*'}).locator('select')
 
     await countryDropdown.selectOption('PH')
     await expect(countryDropdown).toHaveValue('PH')
 
-    await countryDropdown2.selectOption('TH')
-    await expect(countryDropdown2).toHaveValue('TH')
+    await countryDropdown.selectOption('TH')
+    await expect(countryDropdown).toHaveValue('TH')
 })
 
