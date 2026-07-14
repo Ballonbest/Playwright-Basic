@@ -27,10 +27,14 @@ test('Should allow selecting only one gender at a time', async({page}) => {
     await expect(femaleRadio).not.toBeChecked()
 })
 
-test.only('dropdown', async({page}) => {
-    await page.goto("https://web-demo.qahive.com/form-demo")
-    await page.locator('//*[@id="root"]/main/div/div/form[1]/div[5]/select').selectOption('TH')
+test('Dropdown Selection with Robust Locator', async({page}) => {
+    const countryDropdown = page.locator('.form-row').filter({hasText: 'Country'}).locator('select')
+    const countryDropdown2 = page.getByLabel('Country')
 
-    await expect(page.locator('//*[@id="root"]/main/div/div/form[1]/div[5]/select')).toHaveValue('TH')
+    await countryDropdown.selectOption('PH')
+    await expect(countryDropdown).toHaveValue('PH')
+
+    await countryDropdown2.selectOption('TH')
+    await expect(countryDropdown2).toHaveValue('TH')
 })
 
