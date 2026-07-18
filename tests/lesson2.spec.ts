@@ -5,9 +5,9 @@ test.beforeEach('open URL register',async({page}) => {
 })
 
 test('Should be able to check and unlock skills', async({page}) => {
-    const sqlCheckbox = page.getByRole('checkbox', {name:"SQL"})
+    const sqlCheckbox = page.getByRole('checkbox', {name:'SQL'})
 
-    await sqlCheckbox.check()
+    await sqlCheckbox.click()
     await expect(sqlCheckbox).toBeChecked()
 
     await sqlCheckbox.uncheck()
@@ -39,3 +39,19 @@ test('Dropdown Selection with Robust Locator', async({page}) => {
     await expect(countryDropdown).toHaveValue('TH')
 })
 
+
+test('popup',async ({page}) => {
+    await page.goto('https://web-demo.qahive.com/form-demo')
+
+    page.once('dialog', async(dialog) => {
+        await dialog.accept()
+    })
+
+    await page.getByTestId('alert-1').click()
+
+    page.once('dialog', async(dialog) => {
+        await dialog.dismiss()
+    })
+
+    await page.getByTestId('alert-2').click()
+})
